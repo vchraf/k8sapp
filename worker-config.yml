@@ -16,7 +16,7 @@ spec:
         - name: woker
           image: vchraf/worker:1
           ports:
-            - containerPort:9773
+            - containerPort: 9773
 ---
 apiVersion: v1
 kind: Service
