@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workerDeployment
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      tag: worker
+  template:
+    metadata:
+      labels:
+        tag: worker
+    spec:
+      containers:
+        - name: woker
+          image: vchraf/worker:1
+          ports:
+            - containerPort:9773
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: workerClusterIP
+spec:
+  type: ClusterIP
+  selector:
+    tag: worker
+  ports:
+    - port: 9773
+      targetPort: 9773
