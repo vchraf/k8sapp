@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: vchraf/webapp:1
+          image: vchraf/webapp:3
           ports:
             - containerPort: 9772
 ---

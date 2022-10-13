@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tag: redis
+  template:
+    metadata:
+      labels:
+        tag: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          command: ["redis-server"]
+          args: ["--protected-mode","no"]
+          ports:
+            - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    tag: redis
+  ports:
+    - port: 6379
+      targetport: 6379
+  
