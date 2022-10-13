@@ -51,7 +51,7 @@ metadata:
   name: webapp-lb
 spec:
   selector:
-    tag: web
+    tag: webapp
   ports:
     - port: 9772
       targetPort: 9772
