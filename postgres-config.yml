@@ -14,7 +14,7 @@ spec:
     spec:
       volumes:
         - name: postgres-storage
-          PersistentVolumeClaim:
+          persistentVolumeClaim:
             claimName: database-pvc
       containers:
         - name: postgres
@@ -41,5 +41,5 @@ spec:
     tag: postgres
   ports:
     - port: 5432
-      targetport: 5432
+      targetPort: 5432
   
