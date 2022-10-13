@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: vchraf/webapp:5
+          image: vchraf/webapp:4
           ports:
             - containerPort: 9772
           env:
@@ -33,26 +33,26 @@ spec:
             - name: WORKER_ADRESS
               value: worker-clusterip
 ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: webapp-clusterip
-# spec:
-#   type: ClusterIP
-#   selector:
-#     tag: webapp
-#   ports:
-#     - port: 9772
-#       targetPort: 9772
----
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-lb
+  name: webapp-clusterip
 spec:
+  type: ClusterIP
   selector:
     tag: webapp
   ports:
     - port: 9772
       targetPort: 9772
-  type: LoadBalancer
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: webapp-lb
+# spec:
+#   selector:
+#     tag: webapp
+#   ports:
+#     - port: 9772
+#       targetPort: 9772
+#   type: LoadBalancer
