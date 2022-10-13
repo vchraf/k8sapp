@@ -17,6 +17,21 @@ spec:
           image: vchraf/webapp:4
           ports:
             - containerPort: 9772
+          env:
+            - name: REDIS_HOST
+              value: redis-clusterip
+            - name: REDIS_PORT
+              value: '6379'
+            - name: PG_HOST
+              value: postgres-clusterip
+            - name: PG_DB
+              value: postgres
+            - name: PG_USER
+              value: admin
+            - name: PG_PASSWORD
+              value: admin
+            - name: WORKER_ADRESS
+              value: worker-clusterip
 ---
 apiVersion: v1
 kind: Service
