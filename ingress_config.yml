@@ -11,11 +11,13 @@ spec:
   rules:
     - http:
         paths:
-          - path: /predict
+          - path: /
             pathType: Prefix
             backend:
-              serviceName: webapp-clusterip
-              servicePort: 9772
+              service:
+                name: webapp-clusterip
+                port: 
+                  number: 9772
           # - path: /api/?(.*)
           #   # UPDATE THIS LINE ABOVE
           #   backend:
